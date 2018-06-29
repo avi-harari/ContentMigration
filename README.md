@@ -5,7 +5,6 @@ Before using the script, please enter your credentials in ConfigurationFile.
 
 usage: Main.py [-h] -s SYNCPOINT -f FOLDER [--as-user AS_USER]
                [--create-syncpoint]
-               [values [values ...]]
 
 Content Migration API Options
 
