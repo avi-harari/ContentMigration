@@ -5,8 +5,8 @@ import os
 import sys
 import platform
 from Services.AuthenticationClass import Authentication
-from Services.UploadFileClass import Upload
 from Services.FileFolderMetadataClass import FileFolderMetadataClass
+from Services.UploadFileClass import Upload
 import argparse
 
 
@@ -16,6 +16,7 @@ def parse_args():
     parser.add_argument('-f', '--folder', dest='folder', action='store', required=True, default='', help='enter path to folder')
     parser.add_argument('--as-user', dest='as_user', action='store', required=False, default='', help='enter user email in order to commit in name of a certain user')
     parser.add_argument('--create-syncpoint', dest='create_sp', action='store_true', required=False, help='create syncpoint using the entered syncpoint name and upload content of chosen folder under created syncpoint')
+    parser.add_argument('--just-content', dest='just_content', action='store_true', required=False, help='migrate only the content under the specified top level folder (in folder flag)')
     return parser.parse_args()
 
 
@@ -65,7 +66,7 @@ for file in file_list:
     filename = file_list[file]['filename']
     filepath = file_list[file]['filepath']
     split_filepath = str(filepath.split(top_folder_name)[1])
-    if args.create_sp:
+    if args.just_content:
         syncpoint_path = split_filepath.replace('%s' % separator, '%5C') + '%5C' + filename
     else:
         syncpoint_path = '%5C' + top_folder_name + '%5C' + split_filepath.replace('%s' % separator, '%5C') + '%5C' + filename
