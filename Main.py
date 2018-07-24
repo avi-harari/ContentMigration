@@ -13,7 +13,7 @@ import argparse
 def parse_args():
     parser = argparse.ArgumentParser(description='Content Migration API Options')
     parser.add_argument('-s', '--syncpoint', dest='syncpoint', action='store', required=True, help='enter syncpoint name')
-    parser.add_argument('-f', '--folder', dest='folder', action='store', required=True, default='', help='enter path to folder')
+    parser.add_argument('-f', '--folder', dest='folder', action='store', required=True, default='', help='enter path to the local folder to be migrated to Syncplicity')
     parser.add_argument('--as-user', dest='as_user', action='store', required=False, default='', help='enter user email in order to commit in name of a certain user')
     parser.add_argument('--create-syncpoint', dest='create_sp', action='store_true', required=False, help='create syncpoint using the entered syncpoint name and upload content of chosen folder under created syncpoint')
     parser.add_argument('--just-content', dest='just_content', action='store_true', required=False, help='migrate only the content under the specified top level folder (in folder flag)')

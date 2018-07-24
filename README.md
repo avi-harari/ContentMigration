@@ -29,7 +29,7 @@ Arguments:
 
     -s SYNCPOINT, --syncpoint SYNCPOINT - enter syncpoint name
 
-    -f FOLDER, --folder FOLDER - enter path to folder
+    -f FOLDER, --folder FOLDER - enter path to the local folder to be migrated to Syncplicity
 
     --as-user AS_USER - enter user email in order to commit in name of a certain user
 
