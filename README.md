@@ -14,8 +14,8 @@ Requirements: Python3 with requests module installed.
 
 Caveats:
 
-    HTTP 500 is treated as success due to a bug. This is a workaround and should not be used in production.
-    If 2 Syncpoints exist with the same name, one will randomly be chosen.
+* HTTP 500 is treated as success due to a bug. This is a workaround and should not be used in production.
+* If 2 Syncpoints exist with the same name, one will randomly be chosen.
 
 usage: Main.py [-h] -s SYNCPOINT -f FOLDER [--as-user AS_USER] [--create-syncpoint]
 
