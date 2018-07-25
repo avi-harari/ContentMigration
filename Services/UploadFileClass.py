@@ -32,13 +32,6 @@ class Upload:
                 break
             yield data
 
-    def sha256_checksum(self, block_size=65536):
-        sha256 = hashlib.sha256()
-        with open(self.full_path, 'rb') as f:
-            for block in iter(lambda: f.read(block_size), b''):
-                sha256.update(block)
-        return sha256.hexdigest()
-
     def creation_date(self):
         if platform.system() == 'Windows':
             return datetime.datetime.fromtimestamp(os.path.getctime(self.full_path)).isoformat()
