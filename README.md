@@ -10,7 +10,20 @@ In case you do not have the credentials and would like to learn how to obtain th
 
 Supported OSs: Windows (tested on Windows10), Linux (tested on Ububtu)
 
-Requirements: Python3 with requests module installed.
+Requirements: Python3, requests module, requests-toolbelt module.
+
+Installation guide:
+
+In order to install modules with Python, you must have PIP (Python's modules installer).
+PIP usually comes with Python.
+In case you do not have PIP installed, use the link below, it includes instructions for all different OSs:
+
+https://www.makeuseof.com/tag/install-pip-for-python/
+
+Once PIP is installed, open a CLI (cmd or shell) and issue the following commands:
+
+    pip install requests
+    pip install requests-toolbelt
 
 Caveats:
 
