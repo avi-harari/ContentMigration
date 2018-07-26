@@ -1,6 +1,6 @@
 # Content Migration For Syncplicity
 
-This program will walk through a local file tree and replicate it to Syncplicity.
+This program will walk through a local file tree and replicate it to Syncplicity. Note: empty folders are not replicated.
 
 It can create a new syncpoint (top level folder) in Syncplicity
 and store the file tree under that syncpoint
