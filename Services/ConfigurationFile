@@ -1,5 +1,6 @@
 {
   "App Key":           "",
   "App Secret":        "",
-  "Application Token": ""
+  "Application Token": "",
+  "As User":           ""
 }
