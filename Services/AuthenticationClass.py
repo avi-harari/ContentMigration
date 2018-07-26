@@ -22,7 +22,6 @@ class Authentication:
         self.AppKey = self.Credentials['App Key']
         self.AppSecret = self.Credentials['App Secret']
         self.AppToken = self.Credentials['Application Token']
-        self.AsUser = self.Credentials['As User']
         self.OAuthBasic = base64.b64encode((self.AppKey + ":" + self.AppSecret).encode('ascii')).decode('utf8')
         self.login_headers = {'Authorization': 'Basic %s' % self.OAuthBasic, 'Sync-App-Token': '%s' % self.AppToken, 'Content-Type': 'application/x-www-form-urlencoded'}
         if self.AppSecret == "":
