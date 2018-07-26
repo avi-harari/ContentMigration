@@ -1,24 +1,26 @@
-Content Migration For Syncplicity Please use Main.py in order to execute the script.
+# Content Migration For Syncplicity
 
 This program will walk through a local file tree and replicate it to Syncplicity.
 
-It can create a new syncpoint (top level folder) in Syncplicity and store the file tree under that syncpoint or create the exact same tree with current top lever folder as the syncpoint.
+It can create a new syncpoint (top level folder) in Syncplicity
+and store the file tree under that syncpoint
+or create the exact same tree with current top lever folder as the syncpoint.
 
-Before using the script, please enter your credentials in ConfigurationFile.
-
-In case you do not have the credentials and would like to learn how to obtain these, please go to https://developer.syncplicity.com/overview .
+## System Requirements
 
 Supported OSs: Windows (tested on Windows10), Linux (tested on Ububtu)
 
 Requirements: Python3, requests module, requests-toolbelt module.
 
-Installation guide:
+## Getting started
+
+### Installation guide
 
 In order to install modules with Python, you must have PIP (Python's modules installer).
 PIP usually comes with Python.
 In case you do not have PIP installed, use the link below, it includes instructions for all different OSs:
 
-https://www.makeuseof.com/tag/install-pip-for-python/
+<https://www.makeuseof.com/tag/install-pip-for-python/>
 
 Once PIP is installed, open a CLI (cmd or shell) and issue the following commands:
 
@@ -30,11 +32,21 @@ Caveats:
 * HTTP 500 is treated as success due to a bug. This is a workaround and should not be used in production.
 * If 2 Syncpoints exist with the same name, one will randomly be chosen.
 
-usage: Main.py [-h] -s SYNCPOINT -f FOLDER [--as-user AS_USER] [--create-syncpoint]
+### First run
 
-Content Migration API Options
+Before using the program, please enter your credentials in `Services\ConfigurationFile`.
 
-positional arguments: values
+In case you do not have the credentials and would like to learn how to obtain these,
+please go to <https://developer.syncplicity.com/overview>.
+
+## Usage
+
+    Main.py [-h] -s SYNCPOINT -f FOLDER [--as-user AS_USER] [--create-syncpoint]
+
+Note: `--create-syncpoint` flag is required in order to allow syncpoint creation.
+Without the flag, the program stops if no syncpoint with the specified name exists.
+
+### Content Migration API Options
 
 Arguments:
 
@@ -56,4 +68,3 @@ Examples:
     ./Main.py -s "Test Syncpoint" -f C:\Test\TestFolder --as-user user@email.com
     ./Main.py -s "Test Syncpoint" -f "C:\Test\Test Folder" --create-syncpoint
     ./Main.py -s TestSyncpoint -f C:\Test\TestFolder --create-syncpoint --as-user user@email.com
-
