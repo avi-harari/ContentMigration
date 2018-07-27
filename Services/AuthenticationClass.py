@@ -23,12 +23,15 @@ class Authentication:
         self.AppSecret = self.Credentials['App Secret']
         self.AppToken = self.Credentials['Application Token']
         self.OAuthBasic = base64.b64encode((self.AppKey + ":" + self.AppSecret).encode('ascii')).decode('utf8')
-        self.login_headers = {'Authorization': 'Basic %s' % self.OAuthBasic, 'Sync-App-Token': '%s' % self.AppToken, 'Content-Type': 'application/x-www-form-urlencoded'}
+        self.login_headers = {'Authorization': 'Basic %s' % self.OAuthBasic, 'Sync-App-Token': '%s' % self.AppToken,
+                              'Content-Type': 'application/x-www-form-urlencoded'}
         if self.AppSecret == "":
             raise ValueError('Missing App Secret! Please enter App Secret in configuration file')
         if self.AppToken == "":
             raise ValueError('Missing Application Token! Please enter Application Token in configuration file')
-        # request = requests.post(self.url, data=self.login_data, headers=self.login_headers, proxies={"http": "http://127.0.0.1:8888", "https":"http:127.0.0.1:8888"}, verify=r'C:\Users\aharari\Desktop\FiddlerRoot.pem')
+        # request = requests.post(self.url, data=self.login_data, headers=self.login_headers,
+        # proxies={"http":"HTTP_PROXY", "https": "HTTPS_PROXY"},
+        # verify=r'PATH\TO\CERTIFICATE')
         request = requests.post(self.url, data=self.login_data, headers=self.login_headers)
         if request.status_code != 200:
             raise ValueError(

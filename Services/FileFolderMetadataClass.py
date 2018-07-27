@@ -49,8 +49,15 @@ class FileFolderMetadataClass:
                 return i['Id']
 
     def CreateSyncpoint(self, Syncpoint_Name):
-            login_headers = {'As-User': '%s' % self.AsUser, 'Accept': 'application/json', 'Content-Type': 'application/json'}
-            data = [{"Type": 6, "Name": "%s" % Syncpoint_Name, "Mapped": 0, "DownloadEnabled": 0, "UploadEnabled": 0, "StorageEndpointID": "%s" % self.GetDefaultStorage()['Id']}]
+            login_headers = {'As-User': '%s' % self.AsUser,
+                             'Accept': 'application/json',
+                             'Content-Type': 'application/json'}
+            data = [{"Type": 6,
+                     "Name": "%s" % Syncpoint_Name,
+                     "Mapped": 0,
+                     "DownloadEnabled": 0,
+                     "UploadEnabled": 0,
+                     "StorageEndpointID": "%s" % self.GetDefaultStorage()['Id']}]
             json_data = json.dumps(data)
             url = "syncpoint/syncpoints.svc/"
             Method = "POST"
@@ -58,8 +65,13 @@ class FileFolderMetadataClass:
             return json.loads(request.content.decode("utf8"))
 
     def CreateFolderSP(self, Syncpoint, NewFolder):
-        login_headers = {'As-User': '%s' % self.AsUser, 'Accept': 'application/json', 'Content-Type': 'application/json'}
-        data = [{"SyncpointId": "%s" % Syncpoint, "Name": "%s" % NewFolder, "Status": 1, "VirtualPath": "\\%s" % NewFolder}]
+        login_headers = {'As-User': '%s' % self.AsUser,
+                         'Accept': 'application/json',
+                         'Content-Type': 'application/json'}
+        data = [{"SyncpointId": "%s" % Syncpoint,
+                 "Name": "%s" % NewFolder,
+                 "Status": 1,
+                 "VirtualPath": "\\%s" % NewFolder}]
         Method = "POST"
         json_data = json.dumps(data)
         url = "sync/folders.svc/%s/folders" % Syncpoint
@@ -67,7 +79,9 @@ class FileFolderMetadataClass:
         return json.loads(request.content.decode("utf8"))
 
     def CreateFolder(self, SyncpointID, FolderID, NewFolder):
-        login_headers = {'As-User': '%s' % self.AsUser, 'Accept': 'application/json', 'Content-Type': 'application/json'}
+        login_headers = {'As-User': '%s' % self.AsUser,
+                         'Accept': 'application/json',
+                         'Content-Type': 'application/json'}
         data = [{"Name": "%s" % NewFolder, "Status": 1}]
         json_data = json.dumps(data)
         url = "sync/folder_folders.svc/%s/folder/%s/folders" % (SyncpointID, FolderID)

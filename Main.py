@@ -12,11 +12,17 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser(description='Content Migration API Options')
-    parser.add_argument('-s', '--syncpoint', dest='syncpoint', action='store', required=True, help='enter syncpoint name')
-    parser.add_argument('-f', '--folder', dest='folder', action='store', required=True, default='', help='enter path to the local folder to be migrated to Syncplicity')
-    parser.add_argument('--as-user', dest='as_user', action='store', required=False, default='', help='enter user email in order to commit in name of a certain user')
-    parser.add_argument('--create-syncpoint', dest='create_sp', action='store_true', required=False, help='create syncpoint using the entered syncpoint name and upload content of chosen folder under created syncpoint')
-    parser.add_argument('--just-content', dest='just_content', action='store_true', required=False, help='migrate only the content under the specified top level folder (in folder flag)')
+    parser.add_argument('-s', '--syncpoint', dest='syncpoint', action='store', required=True,
+                        help='enter syncpoint name')
+    parser.add_argument('-f', '--folder', dest='folder', action='store', required=True, default='',
+                        help='enter path to the local folder to be migrated to Syncplicity')
+    parser.add_argument('--as-user', dest='as_user', action='store', required=False, default='',
+                        help='enter user email in order to commit in name of a certain user')
+    parser.add_argument('--create-syncpoint', dest='create_sp', action='store_true', required=False,
+                        help='create syncpoint using the entered syncpoint name and upload content of chosen'
+                             ' folder under created syncpoint')
+    parser.add_argument('--just-content', dest='just_content', action='store_true', required=False,
+                        help='migrate only the content under the specified top level folder (in folder flag)')
     return parser.parse_args()
 
 
@@ -69,7 +75,9 @@ for file in file_list:
     if args.just_content:
         syncpoint_path = split_filepath.replace('%s' % separator, '%5C') + '%5C' + filename
     else:
-        syncpoint_path = '%5C' + top_folder_name + '%5C' + split_filepath.replace('%s' % separator, '%5C') + '%5C' + filename
-    UploadFile = Upload(Credentials, AsUser=User_ID, filename='%s' % filename, full_path=filepath).Upload(Syncpoint_ID, syncpoint_path)
+        syncpoint_path = '%5C' + top_folder_name + '%5C' + \
+                         split_filepath.replace('%s' % separator, '%5C') + '%5C' + filename
+    UploadFile = Upload(Credentials, AsUser=User_ID, filename='%s' % filename,
+                        full_path=filepath).Upload(Syncpoint_ID, syncpoint_path)
     if UploadFile.status_code == 500 or 200:
         print('Successfully uploaded %s' % filename)
