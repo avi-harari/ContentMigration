@@ -72,3 +72,10 @@ Arguments:
 
 * HTTP 500 is treated as success due to a bug. This is a workaround and should not be used in production.
 * If 2 Syncpoints exist with the same name, one will randomly be chosen.
+
+### Fiddler Usage Instructions
+
+  1. Obtain Fiddler Root Certificate the following way: Tools -> Options -> HTTPS -> Actions -> Export Root Certificate to Desktop.
+  2. Verify Fiddler port the following way: Tools -> Options -> Connections -> Fiddler listens on port: PORT. This port is for both HTTP & HTTPS.
+  3. In AuthenticationClass.py & API_Caller.py, uncomment the commented requests lines (and comment out the uncommented ones).
+     Replace PORT with the port number & replace PATH\TO\CERTIFICATE with the full path to the root certificate.
